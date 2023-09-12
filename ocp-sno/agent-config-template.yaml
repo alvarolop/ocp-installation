@@ -1,0 +1,34 @@
+apiVersion: v1alpha1
+kind: AgentConfig
+rendezvousIP: $MASTER_0_IP
+hosts:
+  - hostname: master0
+    role: master
+    interfaces:
+      - name: $MASTER_0_INTERFACE
+        macAddress: $MASTER_0_MAC
+    rootDeviceHints:
+      minSizeGigabytes: 100
+    networkConfig:
+      interfaces:
+        - name: $MASTER_0_INTERFACE
+          type: ethernet
+          state: up
+          ipv4:
+            enabled: true
+            address:
+            - ip: $MASTER_0_IP
+              prefix-length: $MASTER_0_IP_PREFIX
+            dhcp: false
+          ipv6:
+            enabled: false
+      dns-resolver:
+        config:
+          server:
+            - $DNS_RESOLVER
+      routes:
+        config:
+          - destination: 0.0.0.0/0
+            next-hop-address: $NEXT_HOP
+            next-hop-interface: $MASTER_0_INTERFACE
+            table-id: 254
