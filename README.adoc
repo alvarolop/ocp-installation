@@ -10,7 +10,7 @@ v1.0, 2023-09
 :sectnumlevels: 2
 :sectnums: 
 :source-highlighter: pygments
-:imagesdir: images
+:imagesdir: docs/images
 // Start: Enable admonition icons
 ifdef::env-github[]
 :tip-caption: :bulb:
@@ -37,5 +37,53 @@ This repository explores the different ways to install Openshift.
 toc::[]
 
 == Introduction
+
+
+In this repository, I will focus on the Agent-based installation. This is a subcommand of the OpenShift Container Platform installer. It generates a bootable ISO image containing all of the information required to deploy an OpenShift Container Platform cluster, with an available release image.
+
+== Create the Vms
+
+
+=== Using Kcli
+
+.Useful kcli commands
+[source, bash]
+----
+kcli create plan -f kcli-plan-acm.yaml acm # Create the OCP plan with name acm
+kcli start plan acm
+kcli stop plan acm
+kcli get vm
+kcli delete plan acm
+----
+
+
+=== Using vSphere
+
+.Openshift Console
+image::vsphere-vm-details.png[]
+
+NOTE: Then, you can edit the name of the VM after installation to `sno-node`.
+
+
+== Generate the ISO Image
+
+
+.Generate files from the template
+[source, bash]
+----
+source ./ocp-sno/env-vars && cat ./ocp-sno/install-config-template.yaml | envsubst > ./agent/install-config.yaml
+
+source ./ocp-sno/env-vars && cat ./ocp-sno/agent-config-template.yaml | envsubst > ./agent/agent-config.yaml
+
+----
+
+
+
+.Generate ISO image
+[source, bash]
+----
+openshift-install agent create image
+----
+
 
 
