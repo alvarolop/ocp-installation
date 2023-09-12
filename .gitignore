@@ -1,3 +1,3 @@
-secrets/*
 agent/*
+!agent/.gitkeep
 */env-vars
