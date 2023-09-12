@@ -1,0 +1,9 @@
+####
+# NETWORKS
+####
+ocp4:
+  type: network
+  # 30 nodes: From 1 to 30
+  cidr: 192.168.122.0/27
+  dhcp: false
+  nat: true
