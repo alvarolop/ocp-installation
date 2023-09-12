@@ -1,7 +1,7 @@
 apiVersion: v1
 baseDomain: $BASE_DOMAIN
 metadata:
-  name: sno-cluster
+  name: $CLUSTER_NAME
 compute:
 - architecture: amd64
   hyperthreading: Enabled
