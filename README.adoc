@@ -43,11 +43,13 @@ In this repository, I will focus on the Agent-based installation. This is a subc
 
 
 
+
+
+
 == Single Node Operator
 
 
 === Create the Vms
-
 
 ==== Using Kcli
 
@@ -60,7 +62,6 @@ kcli stop plan acm
 kcli get vm
 kcli delete plan acm
 ----
-
 
 ==== Using vSphere
 
@@ -83,7 +84,6 @@ govc device.cdrom.add -vm test
 
 
 === Generate the ISO Image
-
 
 .Generate files from the template
 [source, bash]
@@ -131,8 +131,7 @@ govc datastore.upload --dc=SDDC-Datacenter --ds=WorkloadDatastore ./agent/agent.
 
 === Begin the installation
 
-
-.Upload ISO image
+.Verify the installation
 [source, bash]
 ----
 openshift-install --dir ./agent agent wait-for bootstrap-complete --log-level=debug
@@ -148,9 +147,7 @@ openshift-install --dir ./agent agent wait-for install-complete --log-level=debu
 
 == OCP HA installation
 
-
 === Generate the ISO Image
-
 
 .Generate files from the template
 [source, bash]
@@ -198,8 +195,7 @@ govc datastore.upload --dc=SDDC-Datacenter --ds=WorkloadDatastore ./agent/agent.
 
 === Begin the installation
 
-
-.Upload ISO image
+.Verify the installation
 [source, bash]
 ----
 openshift-install --dir ./agent agent wait-for bootstrap-complete --log-level=debug
@@ -207,6 +203,9 @@ openshift-install --dir ./agent agent wait-for bootstrap-complete --log-level=de
 openshift-install --dir ./agent agent wait-for install-complete --log-level=debug
 ----
 
+
+
+NOTE: The URL of the cluster will be `https://console-openshift-console.apps.$CLUSTER_NAME.$CLUSTER_BASE_DOMAIN`.
 
 
 
@@ -232,12 +231,13 @@ oc mirror -v 3 --config ./mirror/imageset-config.yaml file://mirror-to-disk
 oc mirror --from=./mirror_seq1_000000.tar docker://registry.example:5000
 ----
 
-
-
-Based on this documentation:
+The previous process is based on this documentation:
 
 * https://docs.openshift.com/container-platform/4.12/installing/disconnected_install/index.html[About disconnected installation mirroring].
 * https://docs.openshift.com/container-platform/4.12/installing/installing_with_agent_based_installer/understanding-disconnected-installation-mirroring.html[Mirroring images for a disconnected installation through the Agent-based Installer].
+
+
+
 
 
 == Throubleshooting
