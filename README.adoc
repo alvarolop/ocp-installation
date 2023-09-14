@@ -43,11 +43,13 @@ In this repository, I will focus on the Agent-based installation. This is a subc
 
 
 
+== Single Node Operator
 
-== Create the Vms
+
+=== Create the Vms
 
 
-=== Using Kcli
+==== Using Kcli
 
 .Useful kcli commands
 [source, bash]
@@ -60,7 +62,7 @@ kcli delete plan acm
 ----
 
 
-=== Using vSphere
+==== Using vSphere
 
 .Openshift Console
 image::vsphere-vm-details.png[]
@@ -80,7 +82,7 @@ govc device.cdrom.add -vm test
 
 
 
-== Generate the ISO Image
+=== Generate the ISO Image
 
 
 .Generate files from the template
@@ -101,7 +103,7 @@ openshift-install --dir ./agent agent create image
 
 
 
-=== Upload ISO image to VMWare
+==== Upload ISO image to VMWare
 
 We use the https://github.com/vmware/govmomi/tree/main/govc[govc] CLI.
 
@@ -127,7 +129,7 @@ govc datastore.upload --dc=SDDC-Datacenter --ds=WorkloadDatastore ./agent/agent.
 
 
 
-== Begin the installation
+=== Begin the installation
 
 
 .Upload ISO image
@@ -140,14 +142,74 @@ openshift-install --dir ./agent agent wait-for install-complete --log-level=debu
 
 
 
-=== Throubleshooting
 
+
+
+
+== OCP HA installation
+
+
+=== Generate the ISO Image
+
+
+.Generate files from the template
 [source, bash]
 ----
-ssh core@$MASTER_0_IP_ADD_0
-
-ssh-keygen -R $MASTER_0_IP_ADD_0
+source ./ocp/env-vars && cat ./ocp/install-config-template.yaml | envsubst > ./agent/install-config.yaml
+source ./ocp/env-vars && cat ./ocp/agent-config-template.yaml | envsubst > ./agent/agent-config.yaml
 ----
+
+NOTE: Remember that the NMState has to be installed in the node you launch the iso generation: `sudo dnf install nmstate`.
+
+.Generate ISO image
+[source, bash]
+----
+openshift-install --dir ./agent agent create image
+----
+
+
+
+
+==== Upload ISO image to VMWare
+
+We use the https://github.com/vmware/govmomi/tree/main/govc[govc] CLI.
+
+.Using govc
+[source, bash]
+----
+source ocp/env-vars
+# List all VMs
+govc ls -l=true $(govc ls /SDDC-Datacenter/vm/Workloads)
+
+# Get VM info
+govc vm.info sno-node
+----
+
+.Upload ISO image
+[source, bash]
+----
+govc datastore.upload --dc=SDDC-Datacenter --ds=WorkloadDatastore ./agent/agent.x86_64.iso agent2/alvaro-ha-agent.x86_64.iso
+----
+
+
+
+
+
+
+=== Begin the installation
+
+
+.Upload ISO image
+[source, bash]
+----
+openshift-install --dir ./agent agent wait-for bootstrap-complete --log-level=debug
+
+openshift-install --dir ./agent agent wait-for install-complete --log-level=debug
+----
+
+
+
+
 
 
 
@@ -172,11 +234,17 @@ oc mirror --from=./mirror_seq1_000000.tar docker://registry.example:5000
 
 
 
-
-
 Based on this documentation:
 
 * https://docs.openshift.com/container-platform/4.12/installing/disconnected_install/index.html[About disconnected installation mirroring].
 * https://docs.openshift.com/container-platform/4.12/installing/installing_with_agent_based_installer/understanding-disconnected-installation-mirroring.html[Mirroring images for a disconnected installation through the Agent-based Installer].
 
 
+== Throubleshooting
+
+[source, bash]
+----
+ssh core@$MASTER_0_IP_ADD_0
+
+ssh-keygen -R $MASTER_0_IP_ADD_0
+----

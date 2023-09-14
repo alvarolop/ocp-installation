@@ -1,0 +1,124 @@
+apiVersion: v1alpha1
+kind: AgentConfig
+rendezvousIP: $MASTER_0_IP_ADD
+hosts:
+  - hostname: $MASTER_0_NAME
+    role: master
+    interfaces:
+      - name: $MASTER_0_INTERFACE
+        macAddress: $MASTER_0_MAC
+    rootDeviceHints:
+      minSizeGigabytes: 100
+    networkConfig:
+      interfaces:
+        - name: $MASTER_0_INTERFACE
+          type: ethernet
+          state: up
+          ipv4:
+            enabled: true
+            address:
+            - ip: $MASTER_0_IP_ADD
+              prefix-length: $MASTER_0_IP_PREFIX
+            dhcp: false
+          ipv6:
+            enabled: false
+      dns-resolver:
+        config:
+          server:
+            - $DNS_RESOLVER
+      routes:
+        config:
+          - destination: 0.0.0.0/0
+            next-hop-address: $NEXT_HOP
+            next-hop-interface: $MASTER_0_INTERFACE
+            table-id: 254
+  - hostname: $MASTER_1_NAME
+    role: master
+    interfaces:
+      - name: $MASTER_1_INTERFACE
+        macAddress: $MASTER_1_MAC
+    rootDeviceHints:
+      minSizeGigabytes: 100
+    networkConfig:
+      interfaces:
+        - name: $MASTER_1_INTERFACE
+          type: ethernet
+          state: up
+          ipv4:
+            enabled: true
+            address:
+            - ip: $MASTER_1_IP_ADD
+              prefix-length: $MASTER_1_IP_PREFIX
+            dhcp: false
+          ipv6:
+            enabled: false
+      dns-resolver:
+        config:
+          server:
+            - $DNS_RESOLVER
+      routes:
+        config:
+          - destination: 0.0.0.0/0
+            next-hop-address: $NEXT_HOP
+            next-hop-interface: $MASTER_1_INTERFACE
+            table-id: 254
+  - hostname: $MASTER_2_NAME
+    role: master
+    interfaces:
+      - name: $MASTER_2_INTERFACE
+        macAddress: $MASTER_2_MAC
+    rootDeviceHints:
+      minSizeGigabytes: 100
+    networkConfig:
+      interfaces:
+        - name: $MASTER_2_INTERFACE
+          type: ethernet
+          state: up
+          ipv4:
+            enabled: true
+            address:
+            - ip: $MASTER_2_IP_ADD
+              prefix-length: $MASTER_2_IP_PREFIX
+            dhcp: false
+          ipv6:
+            enabled: false
+      dns-resolver:
+        config:
+          server:
+            - $DNS_RESOLVER
+      routes:
+        config:
+          - destination: 0.0.0.0/0
+            next-hop-address: $NEXT_HOP
+            next-hop-interface: $MASTER_2_INTERFACE
+            table-id: 254
+  - hostname: $WORKER_0_NAME
+    role: master
+    interfaces:
+      - name: $WORKER_0_INTERFACE
+        macAddress: $WORKER_0_MAC
+    rootDeviceHints:
+      minSizeGigabytes: 100
+    networkConfig:
+      interfaces:
+        - name: $WORKER_0_INTERFACE
+          type: ethernet
+          state: up
+          ipv4:
+            enabled: true
+            address:
+            - ip: $WORKER_0_IP_ADD
+              prefix-length: $WORKER_0_IP_PREFIX
+            dhcp: false
+          ipv6:
+            enabled: false
+      dns-resolver:
+        config:
+          server:
+            - $DNS_RESOLVER
+      routes:
+        config:
+          - destination: 0.0.0.0/0
+            next-hop-address: $NEXT_HOP
+            next-hop-interface: $WORKER_0_INTERFACE
+            table-id: 254
