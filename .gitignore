@@ -1,3 +1,5 @@
 agent/*
 !agent/.gitkeep
 **/env-vars
+mirror/auth.json
+**.log
