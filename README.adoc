@@ -157,6 +157,7 @@ ssh-keygen -R $MASTER_0_IP_ADD_0
 [source, bash]
 ----
 # Login to the Red Hat Registry using your Customer Portal credentials
+mkdir $XDG_RUNTIME_DIR/containers
 cp mirror/auth.json $XDG_RUNTIME_DIR/containers/auth.json
 
 # Generate initial config file (Then modify manually the location and the catalog version)
