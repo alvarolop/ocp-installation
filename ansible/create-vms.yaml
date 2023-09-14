@@ -1,0 +1,13 @@
+---
+- name: Install VMs
+  hosts: localhost
+  connection: local
+  # Gather facts is required, otherwise this will fail.
+  gather_facts: yes
+  vars_files:
+    - vars/vsphere.yml
+
+  roles:
+  - role: install-vsphere
+    tags:
+    - vsphere
