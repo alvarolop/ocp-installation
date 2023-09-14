@@ -2,4 +2,6 @@ agent/*
 !agent/.gitkeep
 **/env-vars
 mirror/auth.json
+mirror-metadata
+mirror-to-disk
 **.log
