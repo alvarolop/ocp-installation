@@ -41,6 +41,9 @@ toc::[]
 
 In this repository, I will focus on the Agent-based installation. This is a subcommand of the OpenShift Container Platform installer. It generates a bootable ISO image containing all of the information required to deploy an OpenShift Container Platform cluster, with an available release image.
 
+
+
+
 == Create the Vms
 
 
@@ -64,6 +67,18 @@ image::vsphere-vm-details.png[]
 
 NOTE: Then, you can edit the name of the VM after installation to `sno-node`.
 
+Alternatively, use the https://github.com/vmware/govmomi/blob/main/govc/USAGE.md#vmcreate[govc vm.create] command:
+
+[source, bash]
+----
+source ./ocp-sno/env-vars && govc vm.create --dc=SDDC-Datacenter -c 8 -m=16384 -folder=$(govc ls /SDDC-Datacenter/vm/Workloads) -net=$(govc ls /SDDC-Datacenter/network | grep segment) -on=false test
+govc device.cdrom.add -vm test
+
+----
+
+
+
+
 
 == Generate the ISO Image
 
@@ -72,9 +87,7 @@ NOTE: Then, you can edit the name of the VM after installation to `sno-node`.
 [source, bash]
 ----
 source ./ocp-sno/env-vars && cat ./ocp-sno/install-config-template.yaml | envsubst > ./agent/install-config.yaml
-
 source ./ocp-sno/env-vars && cat ./ocp-sno/agent-config-template.yaml | envsubst > ./agent/agent-config.yaml
-
 ----
 
 NOTE: Remember that the NMState has to be installed in the node you launch the iso generation: `sudo dnf install nmstate`.
@@ -87,7 +100,8 @@ openshift-install --dir ./agent agent create image
 
 
 
-== Upload ISO image to VMWare
+
+=== Upload ISO image to VMWare
 
 We use the https://github.com/vmware/govmomi/tree/main/govc[govc] CLI.
 
@@ -105,8 +119,12 @@ govc vm.info sno-node
 .Upload ISO image
 [source, bash]
 ----
-govc datastore.upload --dc=SDDC-Datacenter --ds=WorkloadDatastore  agent.x86_64.iso agent2/alvaro-agent.x86_64.iso
+govc datastore.upload --dc=SDDC-Datacenter --ds=WorkloadDatastore ./agent/agent.x86_64.iso agent2/alvaro-agent.x86_64.iso
 ----
+
+
+
+
 
 
 == Begin the installation
@@ -119,4 +137,35 @@ openshift-install --dir ./agent agent wait-for bootstrap-complete --log-level=de
 
 openshift-install --dir ./agent agent wait-for install-complete --log-level=debug
 ----
+
+
+
+=== Throubleshooting
+
+[source, bash]
+----
+ssh core@$MASTER_0_IP_ADD_0
+
+ssh-keygen -R $MASTER_0_IP_ADD_0
+----
+
+
+
+== Disconnected installation
+
+
+=== Mirroring the RH registry
+
+
+[source, bash]
+----
+
+----
+
+
+Based on this documentation:
+
+* https://docs.openshift.com/container-platform/4.12/installing/disconnected_install/index.html[About disconnected installation mirroring].
+* https://docs.openshift.com/container-platform/4.12/installing/installing_with_agent_based_installer/understanding-disconnected-installation-mirroring.html[Mirroring images for a disconnected installation through the Agent-based Installer].
+
 
