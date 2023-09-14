@@ -6,7 +6,7 @@
 
 export PULL_SECRET=''
 export MACHINE_NETWORK_CIDR=""
-export BASE_DOMAIN=""
+export CLUSTER_BASE_DOMAIN=""
 export CLUSTER_NAME=""
 
 
