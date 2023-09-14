@@ -151,16 +151,26 @@ ssh-keygen -R $MASTER_0_IP_ADD_0
 
 
 
-== Disconnected installation
-
-
-=== Mirroring the RH registry
+== Mirroring the RH registry
 
 
 [source, bash]
 ----
+# Login to the Red Hat Registry using your Customer Portal credentials
+cp mirror/auth.json $XDG_RUNTIME_DIR/containers/auth.json
 
+# Generate initial config file (Then modify manually the location and the catalog version)
+oc mirror init --registry example.com/mirror/oc-mirror-metadata > ./mirror/imageset-config.yaml
+
+# Mirror it locally
+oc mirror -v 3 --config ./mirror/imageset-config.yaml file://mirror-to-disk
+
+# After copying it to the new folder, generate the registry
+oc mirror --from=./mirror_seq1_000000.tar docker://registry.example:5000
 ----
+
+
+
 
 
 Based on this documentation:

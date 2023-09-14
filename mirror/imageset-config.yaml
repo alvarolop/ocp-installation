@@ -1,0 +1,18 @@
+kind: ImageSetConfiguration
+apiVersion: mirror.openshift.io/v1alpha2
+storageConfig:
+  local:
+    path: ./mirror-metadata
+mirror:
+  platform:
+    channels:
+    - name: stable-4.12
+      type: ocp
+  operators:
+  - catalog: registry.redhat.io/redhat/redhat-operator-index:v4.12
+    packages:
+    # OADP Packages
+    - name: redhat-oadp-operator
+  additionalImages:
+  - name: registry.redhat.io/ubi9/ubi:latest
+  helm: {}
