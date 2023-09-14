@@ -1,0 +1,33 @@
+#!/bin/bash
+
+###
+# INSTALL CONFIG
+### 
+
+export PULL_SECRET=''
+export MACHINE_NETWORK_CIDR=""
+export BASE_DOMAIN=""
+export CLUSTER_NAME=""
+
+
+###
+# AGENT CONFIG
+### 
+
+export MASTER_0_INTERFACE="eth0"
+export MASTER_0_IP_ADD_0="" # API IP
+export MASTER_0_IP_ADD_1="" # Apps IP
+export MASTER_0_IP_PREFIX="24"
+export MASTER_0_MAC="da:b8:e4:77:82:00"
+
+export NEXT_HOP=""
+export DNS_RESOLVER=""
+
+
+###
+# GOVC
+###
+
+export GOVC_URL=""
+export GOVC_USERNAME=""
+export GOVC_PASSWORD=""

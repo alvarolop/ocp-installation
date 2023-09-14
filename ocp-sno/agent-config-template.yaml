@@ -1,6 +1,6 @@
 apiVersion: v1alpha1
 kind: AgentConfig
-rendezvousIP: $MASTER_0_IP
+rendezvousIP: $MASTER_0_IP_ADD_0
 hosts:
   - hostname: master0
     role: master
@@ -17,7 +17,9 @@ hosts:
           ipv4:
             enabled: true
             address:
-            - ip: $MASTER_0_IP
+            - ip: $MASTER_0_IP_ADD_0
+              prefix-length: $MASTER_0_IP_PREFIX
+            - ip: $MASTER_0_IP_ADD_1
               prefix-length: $MASTER_0_IP_PREFIX
             dhcp: false
           ipv6:
