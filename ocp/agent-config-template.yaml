@@ -8,12 +8,14 @@ hosts:
       - name: $MASTER_0_INTERFACE
         macAddress: $MASTER_0_MAC
     rootDeviceHints:
-      minSizeGigabytes: 100
+      # minSizeGigabytes: 100
+      deviceName: /dev/sda
     networkConfig:
       interfaces:
         - name: $MASTER_0_INTERFACE
           type: ethernet
           state: up
+          mac-address: $MASTER_0_MAC
           ipv4:
             enabled: true
             address:
@@ -38,12 +40,14 @@ hosts:
       - name: $MASTER_1_INTERFACE
         macAddress: $MASTER_1_MAC
     rootDeviceHints:
-      minSizeGigabytes: 100
+      # minSizeGigabytes: 100
+      deviceName: /dev/sda
     networkConfig:
       interfaces:
         - name: $MASTER_1_INTERFACE
           type: ethernet
           state: up
+          mac-address: $MASTER_1_MAC
           ipv4:
             enabled: true
             address:
@@ -68,12 +72,14 @@ hosts:
       - name: $MASTER_2_INTERFACE
         macAddress: $MASTER_2_MAC
     rootDeviceHints:
-      minSizeGigabytes: 100
+      # minSizeGigabytes: 100
+      deviceName: /dev/sda
     networkConfig:
       interfaces:
         - name: $MASTER_2_INTERFACE
           type: ethernet
           state: up
+          mac-address: $MASTER_2_MAC
           ipv4:
             enabled: true
             address:
@@ -98,12 +104,14 @@ hosts:
       - name: $WORKER_0_INTERFACE
         macAddress: $WORKER_0_MAC
     rootDeviceHints:
-      minSizeGigabytes: 100
+      # minSizeGigabytes: 100
+      deviceName: /dev/sda
     networkConfig:
       interfaces:
         - name: $WORKER_0_INTERFACE
           type: ethernet
           state: up
+          mac-address: $WORKER_0_MAC
           ipv4:
             enabled: true
             address:
