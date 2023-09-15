@@ -294,6 +294,8 @@ cd ocp4-abi/ansible/ocp4-abi-installation
 
 # Check status
 KUBECONFIG=my_cluster_ansible/../auth/kubeconfig oc get nodes
+
+openshift-install --dir my_cluster_ansible/.. agent wait-for bootstrap-complete --log-level=debug
 ----
 
 
