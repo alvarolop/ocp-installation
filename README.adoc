@@ -185,10 +185,20 @@ govc vm.info sno-node
 .Upload ISO image
 [source, bash]
 ----
-govc datastore.upload --dc=SDDC-Datacenter --ds=WorkloadDatastore ./agent/agent.x86_64.iso agent2/alvaro-ha-agent.x86_64.iso
+govc datastore.upload --dc=SDDC-Datacenter --ds=WorkloadDatastore ./agent/agent.x86_64.iso agent2/alvaro-ha/agent.x86_64.iso
 ----
 
 
+=== Create the VMs
+
+
+.Verify the installation
+[source, bash]
+----
+cd Ansible
+
+ansible-playbook -vvv -i inventory create-vms.yaml
+----
 
 
 
@@ -213,7 +223,6 @@ openshift-install --dir ./agent agent wait-for install-complete --log-level=debu
 * Using the kubeadmin: `echo "oc login -v 9 --insecure-skip-tls-verify=true -u kubeadmin --server=https://api.$CLUSTER_NAME.$CLUSTER_BASE_DOMAIN:6443"`
 * Using the kubeconfig: `KUBECONFIG=agent/auth/kubeconfig oc get pods -A`.
 
-
 ====
 
 
@@ -225,6 +234,14 @@ openshift-install --dir ./agent agent wait-for install-complete --log-level=debu
 
 Automation execution environments are container images on which all automation in Red Hat Ansible Automation Platform is run.
 
+
+[source, bash]
+----
+# Installation
+sudo dnf config-manager --enable ansible-automation-platform-2.1-for-rhel-8-x86_64-rpms
+sudo dnf install ansible-builder
+
+----
 
 
 Documentation:
