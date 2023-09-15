@@ -234,12 +234,45 @@ openshift-install --dir ./agent agent wait-for install-complete --log-level=debu
 
 Automation execution environments are container images on which all automation in Red Hat Ansible Automation Platform is run.
 
+.Process to restore RHSM
+[source, bash]
+----
+# Clean previous subscription
+sudo mv /etc/rhsm/rhsm.conf /etc/rhsm/rhsm.conf.satellite-backup
+sudo mv /etc/rhsm/rhsm.conf.kat-backup /etc/rhsm/rhsm.conf
+sudo subscription-manager clean
 
+# Subscribe to Red Hat CDN
+sudo subscription-manager register
+sudo subscription-manager repos --enable=ansible-automation-platform-2.4-for-rhel-8-x86_64-rpms # For ansible-builder
+sudo subscription-manager repos --enable=rhocp-4.12-for-rhel-8-x86_64-rpms # For the build itself
+sudo dnf upgrade
+----
+
+The previous commands are based on: https://access.redhat.com/solutions/253273
+
+NOTE: You need to obtain a token from https://console.redhat.com/ansible/automation-hub/token/[here] and add it to the ansible.cfg file. 
+
+
+.Install Ansible Builder
 [source, bash]
 ----
 # Installation
-sudo dnf config-manager --enable ansible-automation-platform-2.1-for-rhel-8-x86_64-rpms
-sudo dnf install ansible-builder
+sudo dnf install ansible-core ansible-navigator ansible-builder 
+
+# Add the podman credentials to all the container registries
+cp mirror/auth.json $XDG_RUNTIME_DIR/containers/auth.json
+
+# Download the OCP tools with https://github.com/jtudelag/ocp-disconnected/blob/main/scripts/download-ocp-tools.sh
+./scripts/download-ocp-tools.sh
+mkdir files
+cp <location-of-the-tar> files
+
+# Create the container image
+ansible-builder build -v 3 --tag quay.io/alopezme/ee-ocp-vmware:latest
+
+# Run the playbook
+ansible-navigator run create-vms.yaml --eei quay.io/alopezme/ee-ocp-vmware:latest --pp never -b -m stdout
 
 ----
 
