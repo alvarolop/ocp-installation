@@ -205,8 +205,31 @@ openshift-install --dir ./agent agent wait-for install-complete --log-level=debu
 
 
 
-NOTE: The URL of the cluster will be `https://console-openshift-console.apps.$CLUSTER_NAME.$CLUSTER_BASE_DOMAIN`.
+.How to connect to the cluster
+[NOTE]
+====
 
+* Using the web console: `echo "https://console-openshift-console.apps.$CLUSTER_NAME.$CLUSTER_BASE_DOMAIN"`.
+* Using the kubeadmin: `echo "oc login -v 9 --insecure-skip-tls-verify=true -u kubeadmin --server=https://api.$CLUSTER_NAME.$CLUSTER_BASE_DOMAIN:6443"`
+* Using the kubeconfig: `KUBECONFIG=agent/auth/kubeconfig oc get pods -A`.
+
+
+====
+
+
+
+
+
+
+== Automation execution environments
+
+Automation execution environments are container images on which all automation in Red Hat Ansible Automation Platform is run.
+
+
+
+Documentation:
+
+* https://access.redhat.com/documentation/en-us/red_hat_ansible_automation_platform/2.4/html-single/creating_and_consuming_execution_environments/index[Creating and Consuming Execution Environments].
 
 
 
