@@ -221,7 +221,7 @@ openshift-install --dir ./agent agent wait-for install-complete --log-level=debu
 
 * Using the web console: `echo "https://console-openshift-console.apps.$CLUSTER_NAME.$CLUSTER_BASE_DOMAIN"`.
 * Using the kubeadmin: `echo "oc login -v 9 --insecure-skip-tls-verify=true -u kubeadmin --server=https://api.$CLUSTER_NAME.$CLUSTER_BASE_DOMAIN:6443"`
-* Using the kubeconfig: `KUBECONFIG=agent/auth/kubeconfig oc get pods -A`.
+* Using the kubeconfig: `KUBECONFIG=agent/auth/kubeconfig oc get nodes`.
 
 ====
 
@@ -267,19 +267,37 @@ cp mirror/auth.json $XDG_RUNTIME_DIR/containers/auth.json
 ./scripts/download-ocp-tools.sh
 mkdir files
 cp <location-of-the-tar> files
+----
 
+.Run with Ansible Builder
+[source, bash]
+----
 # Create the container image
 ansible-builder build -v 3 --tag quay.io/alopezme/ee-ocp-vmware:latest
 
 # Run the playbook
 ansible-navigator run create-vms.yaml --eei quay.io/alopezme/ee-ocp-vmware:latest --pp never -b -m stdout
-
 ----
 
 
 Documentation:
 
 * https://access.redhat.com/documentation/en-us/red_hat_ansible_automation_platform/2.4/html-single/creating_and_consuming_execution_environments/index[Creating and Consuming Execution Environments].
+
+
+.Install with the ansible execution environment
+[source, bash]
+----
+# Install
+cd ocp4-abi/ansible/ocp4-abi-installation
+./install-ocp4.sh
+
+# Check status
+KUBECONFIG=my_cluster_ansible/../auth/kubeconfig oc get nodes
+----
+
+
+
 
 
 
