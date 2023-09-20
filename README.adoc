@@ -247,6 +247,10 @@ sudo subscription-manager register
 sudo subscription-manager repos --enable=ansible-automation-platform-2.4-for-rhel-8-x86_64-rpms # For ansible-builder
 sudo subscription-manager repos --enable=rhocp-4.12-for-rhel-8-x86_64-rpms # For the build itself
 sudo dnf upgrade
+
+# Add EPEL to RHEL 8
+sudo subscription-manager repos --enable codeready-builder-for-rhel-9-$(arch)-rpms
+sudo dnf install https://dl.fedoraproject.org/pub/epel/epel-release-latest-9.noarch.rpm
 ----
 
 The previous commands are based on: https://access.redhat.com/solutions/253273
@@ -261,7 +265,10 @@ NOTE: You need to obtain a token from https://console.redhat.com/ansible/automat
 sudo dnf install ansible-core ansible-navigator ansible-builder 
 
 # Add the podman credentials to all the container registries
-cp mirror/auth.json $XDG_RUNTIME_DIR/containers/auth.json
+mkdir $HOME/.docker
+# cp mirror/auth.json $XDG_RUNTIME_DIR/containers/auth.json # This is ephemeral
+cp mirror/auth.json $HOME/.docker/config.json # This is persistent
+
 
 # Download the OCP tools with https://github.com/jtudelag/ocp-disconnected/blob/main/scripts/download-ocp-tools.sh
 ./scripts/download-ocp-tools.sh
@@ -298,7 +305,12 @@ KUBECONFIG=my_cluster_ansible/../auth/kubeconfig oc get nodes
 
 
 
-
+.Managing Ansible Vault
+[source, bash]
+----
+ansible-vault view vars/vault.yml
+ansible-vault edit vars/vault.yml
+----
 
 
 
@@ -310,7 +322,9 @@ KUBECONFIG=my_cluster_ansible/../auth/kubeconfig oc get nodes
 ----
 # Login to the Red Hat Registry using your Customer Portal credentials
 mkdir $XDG_RUNTIME_DIR/containers
-cp mirror/auth.json $XDG_RUNTIME_DIR/containers/auth.json
+mkdir $HOME/.docker
+cp mirror/auth.json $XDG_RUNTIME_DIR/containers/auth.json # This is ephemeral
+cp mirror/auth.json $HOME/.docker/config.json # This is persistent
 
 # Generate initial config file (Then modify manually the location and the catalog version)
 oc mirror init --registry example.com/mirror/oc-mirror-metadata > ./mirror/imageset-config.yaml
@@ -331,7 +345,7 @@ The previous process is based on this documentation:
 
 
 
-== Throubleshooting
+== Troubleshooting during installation
 
 [source, bash]
 ----
