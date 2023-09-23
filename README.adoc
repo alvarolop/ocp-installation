@@ -249,8 +249,8 @@ sudo subscription-manager repos --enable=rhocp-4.12-for-rhel-8-x86_64-rpms # For
 sudo dnf upgrade
 
 # Add EPEL to RHEL 8
-sudo subscription-manager repos --enable codeready-builder-for-rhel-9-$(arch)-rpms
-sudo dnf install https://dl.fedoraproject.org/pub/epel/epel-release-latest-9.noarch.rpm
+    sudo subscription-manager repos --enable codeready-builder-for-rhel-8-$(arch)-rpms
+sudo dnf install https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
 ----
 
 The previous commands are based on: https://access.redhat.com/solutions/253273
