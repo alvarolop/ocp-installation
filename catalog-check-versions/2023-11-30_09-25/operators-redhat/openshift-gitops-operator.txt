@@ -1,0 +1,15 @@
+NAME                       DISPLAY NAME              DEFAULT CHANNEL
+openshift-gitops-operator  Red Hat OpenShift GitOps  latest
+
+PACKAGE                    CHANNEL      HEAD
+openshift-gitops-operator  gitops-1.10  openshift-gitops-operator.v1.10.1
+openshift-gitops-operator  gitops-1.3   openshift-gitops-operator.v1.3.13
+openshift-gitops-operator  gitops-1.4   openshift-gitops-operator.v1.4.13
+openshift-gitops-operator  gitops-1.5   openshift-gitops-operator.v1.5.10
+openshift-gitops-operator  gitops-1.6   openshift-gitops-operator.v1.6.7
+openshift-gitops-operator  gitops-1.7   openshift-gitops-operator.v1.7.4-0.1690486082.p
+openshift-gitops-operator  gitops-1.8   openshift-gitops-operator.v1.8.6
+openshift-gitops-operator  gitops-1.9   openshift-gitops-operator.v1.9.3
+openshift-gitops-operator  latest       openshift-gitops-operator.v1.10.1
+openshift-gitops-operator  preview      openshift-gitops-operator.v1.4.8
+openshift-gitops-operator  stable       openshift-gitops-operator.v1.5.10

@@ -1,0 +1,7 @@
+NAME               DISPLAY NAME       DEFAULT CHANNEL
+keycloak-operator  Keycloak Operator  fast
+
+PACKAGE            CHANNEL    HEAD
+keycloak-operator  alpha      keycloak-operator.v19.0.3
+keycloak-operator  candidate  keycloak-operator.v20.0.0-alpha.7
+keycloak-operator  fast       keycloak-operator.v23.0.0

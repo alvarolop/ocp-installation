@@ -1,0 +1,5 @@
+NAME        DISPLAY NAME    DEFAULT CHANNEL
+kiali-ossm  Kiali Operator  stable
+
+PACKAGE     CHANNEL  HEAD
+kiali-ossm  stable   kiali-operator.v1.65.11

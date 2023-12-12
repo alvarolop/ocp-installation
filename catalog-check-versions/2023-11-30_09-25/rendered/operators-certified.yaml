@@ -1,0 +1,15 @@
+- name: crunchy-postgres-operator
+  channels:
+      - name: v5
+        maxVersion: 5.4.3
+        minVersion: 5.4.3
+- name: cloud-native-postgresql
+  channels:
+      - name: stable-v1.21
+        maxVersion: 1.21.1
+        minVersion: 1.21.1
+- name: elasticsearch-eck-operator-certified
+  channels:
+      - name: stable
+        maxVersion: 2.10.0
+        minVersion: 2.10.0

@@ -1,0 +1,9 @@
+NAME           DISPLAY NAME   DEFAULT CHANNEL
+loki-operator  Loki Operator  stable-5.8
+
+PACKAGE        CHANNEL     HEAD
+loki-operator  stable      loki-operator.v5.8.0
+loki-operator  stable-5.5  loki-operator.5.5.18
+loki-operator  stable-5.6  loki-operator.v5.6.13
+loki-operator  stable-5.7  loki-operator.v5.7.8
+loki-operator  stable-5.8  loki-operator.v5.8.0

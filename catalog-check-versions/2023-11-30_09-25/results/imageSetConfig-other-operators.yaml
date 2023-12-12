@@ -1,0 +1,47 @@
+kind: ImageSetConfiguration
+apiVersion: mirror.openshift.io/v1alpha2
+storageConfig:
+  local:
+    path: ./oc-mirror-metadata
+mirror:
+  operators:
+  - catalog: registry.redhat.io/redhat/community-operator-index:v4.12
+    packages:
+    # Keycloak Packages
+    - name: keycloak-operator
+      channels:
+          - name: fast
+            maxVersion: 23.0.0
+            minVersion: 23.0.0
+    # ESO
+    - name: external-secrets-operator
+      channels:
+          - name: alpha
+            maxVersion: 0.9.9
+            minVersion: 0.9.9
+    # Strimzi Kafka
+    - name: strimzi-kafka-operator
+      channels:
+          - name: stable
+            maxVersion: 0.38.0
+            minVersion: 0.38.0
+  - catalog: registry.redhat.io/redhat/certified-operator-index:v4.12
+    packages:
+    # CrunchyDB Packages
+    - name: crunchy-postgres-operator
+      channels:
+          - name: v5
+            maxVersion: 5.4.3
+            minVersion: 5.4.3
+    # EDB Packages
+    - name: cloud-native-postgresql
+      channels:
+          - name: stable-v1.21
+            maxVersion: 1.21.1
+            minVersion: 1.21.1
+    # ECK Packages
+    - name: elasticsearch-eck-operator-certified
+      channels:
+          - name: stable
+            maxVersion: 2.10.0
+            minVersion: 2.10.0

@@ -1,0 +1,10 @@
+NAME         DISPLAY NAME  DEFAULT CHANNEL
+amq-streams  AMQ Streams   stable
+
+PACKAGE      CHANNEL            HEAD
+amq-streams  amq-streams-2.2.x  amqstreams.v2.2.2-1
+amq-streams  amq-streams-2.3.x  amqstreams.v2.3.0-4
+amq-streams  amq-streams-2.4.x  amqstreams.v2.4.0-3
+amq-streams  amq-streams-2.5.x  amqstreams.v2.5.1-1
+amq-streams  amq-streams-2.x    amqstreams.v2.5.1-1
+amq-streams  stable             amqstreams.v2.5.1-1

@@ -1,0 +1,21 @@
+NAME                    DISPLAY NAME  DEFAULT CHANNEL
+strimzi-kafka-operator  Strimzi       stable
+
+PACKAGE                 CHANNEL         HEAD
+strimzi-kafka-operator  stable          strimzi-cluster-operator.v0.38.0
+strimzi-kafka-operator  strimzi-0.23.x  strimzi-cluster-operator.v0.23.0
+strimzi-kafka-operator  strimzi-0.24.x  strimzi-cluster-operator.v0.24.0
+strimzi-kafka-operator  strimzi-0.25.x  strimzi-cluster-operator.v0.25.0
+strimzi-kafka-operator  strimzi-0.26.x  strimzi-cluster-operator.v0.26.1
+strimzi-kafka-operator  strimzi-0.27.x  strimzi-cluster-operator.v0.27.1
+strimzi-kafka-operator  strimzi-0.28.x  strimzi-cluster-operator.v0.28.0
+strimzi-kafka-operator  strimzi-0.29.x  strimzi-cluster-operator.v0.29.0
+strimzi-kafka-operator  strimzi-0.30.x  strimzi-cluster-operator.v0.30.0
+strimzi-kafka-operator  strimzi-0.31.x  strimzi-cluster-operator.v0.31.1
+strimzi-kafka-operator  strimzi-0.32.x  strimzi-cluster-operator.v0.32.0
+strimzi-kafka-operator  strimzi-0.33.x  strimzi-cluster-operator.v0.33.2
+strimzi-kafka-operator  strimzi-0.34.x  strimzi-cluster-operator.v0.34.0
+strimzi-kafka-operator  strimzi-0.35.x  strimzi-cluster-operator.v0.35.1
+strimzi-kafka-operator  strimzi-0.36.x  strimzi-cluster-operator.v0.36.1
+strimzi-kafka-operator  strimzi-0.37.x  strimzi-cluster-operator.v0.37.0
+strimzi-kafka-operator  strimzi-0.38.x  strimzi-cluster-operator.v0.38.0

@@ -1,0 +1,24 @@
+kind: ImageSetConfiguration
+apiVersion: mirror.openshift.io/v1alpha2
+storageConfig:
+  local:
+    path: ./oc-mirror-metadata
+mirror:
+  operators:
+  - catalog: registry.redhat.io/redhat/community-operator-index:v4.12
+    packages:
+    # Keycloak Packages
+    - name: keycloak-operator
+    # ESO
+    - name: external-secrets-operator
+    # Strimzi Kafka
+    - name: strimzi-kafka-operator
+  - catalog: registry.redhat.io/redhat/certified-operator-index:v4.12
+    packages:
+    # CrunchyDB Packages
+    - name: crunchy-postgres-operator
+    # EDB Packages
+    - name: cloud-native-postgresql
+    # ECK Packages
+    - name: elasticsearch-eck-operator-certified
+

@@ -1,0 +1,11 @@
+VERSIONS
+4.12.0
+4.12.1
+4.12.2-rhodf
+4.12.8-rhodf
+4.12.9-rhodf
+4.12.3-rhodf
+4.12.4-rhodf
+4.12.5-rhodf
+4.12.6-rhodf
+4.12.7-rhodf

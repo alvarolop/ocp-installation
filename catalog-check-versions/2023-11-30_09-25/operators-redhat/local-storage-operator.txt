@@ -1,0 +1,5 @@
+NAME                    DISPLAY NAME   DEFAULT CHANNEL
+local-storage-operator  Local Storage  stable
+
+PACKAGE                 CHANNEL  HEAD
+local-storage-operator  stable   local-storage-operator.v4.12.0-202311071130

@@ -1,0 +1,7 @@
+NAME                 DISPLAY NAME         DEFAULT CHANNEL
+compliance-operator  Compliance Operator  stable
+
+PACKAGE              CHANNEL      HEAD
+compliance-operator  4.7          compliance-operator.v0.1.32
+compliance-operator  release-0.1  compliance-operator.v0.1.61
+compliance-operator  stable       compliance-operator.v1.3.1

@@ -1,0 +1,5 @@
+NAME                 DISPLAY NAME              DEFAULT CHANNEL
+cincinnati-operator  OpenShift Update Service  v1
+
+PACKAGE              CHANNEL  HEAD
+cincinnati-operator  v1       update-service-operator.v5.0.2

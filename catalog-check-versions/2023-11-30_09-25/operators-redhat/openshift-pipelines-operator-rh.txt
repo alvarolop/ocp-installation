@@ -1,0 +1,10 @@
+NAME                             DISPLAY NAME                 DEFAULT CHANNEL
+openshift-pipelines-operator-rh  Red Hat OpenShift Pipelines  latest
+
+PACKAGE                          CHANNEL         HEAD
+openshift-pipelines-operator-rh  latest          openshift-pipelines-operator-rh.v1.12.2
+openshift-pipelines-operator-rh  pipelines-1.10  openshift-pipelines-operator-rh.v1.10.5
+openshift-pipelines-operator-rh  pipelines-1.11  openshift-pipelines-operator-rh.v1.11.2
+openshift-pipelines-operator-rh  pipelines-1.12  openshift-pipelines-operator-rh.v1.12.2
+openshift-pipelines-operator-rh  pipelines-1.8   openshift-pipelines-operator-rh.v1.8.2
+openshift-pipelines-operator-rh  pipelines-1.9   openshift-pipelines-operator-rh.v1.9.3

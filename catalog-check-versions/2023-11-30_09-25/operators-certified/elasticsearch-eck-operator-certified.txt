@@ -1,0 +1,5 @@
+NAME                                  DISPLAY NAME                  DEFAULT CHANNEL
+elasticsearch-eck-operator-certified  Elasticsearch (ECK) Operator  stable
+
+PACKAGE                               CHANNEL  HEAD
+elasticsearch-eck-operator-certified  stable   elasticsearch-eck-operator-certified.v2.10.0

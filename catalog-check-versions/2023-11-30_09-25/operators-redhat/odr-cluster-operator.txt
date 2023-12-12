@@ -1,0 +1,6 @@
+NAME                  DISPLAY NAME                   DEFAULT CHANNEL
+odr-cluster-operator  Openshift DR Cluster Operator  stable-4.12
+
+PACKAGE               CHANNEL      HEAD
+odr-cluster-operator  stable-4.11  odr-cluster-operator.v4.11.12
+odr-cluster-operator  stable-4.12  odr-cluster-operator.v4.12.9-rhodf

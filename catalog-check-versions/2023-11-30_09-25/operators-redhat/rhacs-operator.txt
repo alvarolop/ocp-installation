@@ -1,0 +1,22 @@
+NAME            DISPLAY NAME                              DEFAULT CHANNEL
+rhacs-operator  Advanced Cluster Security for Kubernetes  stable
+
+PACKAGE         CHANNEL     HEAD
+rhacs-operator  latest      rhacs-operator.v3.74.7
+rhacs-operator  rhacs-3.62  rhacs-operator.v3.62.1
+rhacs-operator  rhacs-3.64  rhacs-operator.v3.64.2
+rhacs-operator  rhacs-3.65  rhacs-operator.v3.65.1
+rhacs-operator  rhacs-3.66  rhacs-operator.v3.66.1
+rhacs-operator  rhacs-3.67  rhacs-operator.v3.67.2
+rhacs-operator  rhacs-3.68  rhacs-operator.v3.68.2
+rhacs-operator  rhacs-3.69  rhacs-operator.v3.69.2
+rhacs-operator  rhacs-3.70  rhacs-operator.v3.70.1
+rhacs-operator  rhacs-3.71  rhacs-operator.v3.71.3
+rhacs-operator  rhacs-3.72  rhacs-operator.v3.72.4
+rhacs-operator  rhacs-3.73  rhacs-operator.v3.73.5
+rhacs-operator  rhacs-3.74  rhacs-operator.v3.74.7
+rhacs-operator  rhacs-4.0   rhacs-operator.v4.0.5
+rhacs-operator  rhacs-4.1   rhacs-operator.v4.1.5
+rhacs-operator  rhacs-4.2   rhacs-operator.v4.2.2
+rhacs-operator  rhacs-4.3   rhacs-operator.v4.3.0
+rhacs-operator  stable      rhacs-operator.v4.3.0

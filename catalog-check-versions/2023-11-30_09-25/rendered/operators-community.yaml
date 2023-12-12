@@ -1,0 +1,15 @@
+- name: keycloak-operator
+  channels:
+      - name: fast
+        maxVersion: 23.0.0
+        minVersion: 23.0.0
+- name: external-secrets-operator
+  channels:
+      - name: alpha
+        maxVersion: 0.9.9
+        minVersion: 0.9.9
+- name: strimzi-kafka-operator
+  channels:
+      - name: stable
+        maxVersion: 0.38.0
+        minVersion: 0.38.0

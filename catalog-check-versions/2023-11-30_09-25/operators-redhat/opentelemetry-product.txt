@@ -1,0 +1,5 @@
+NAME                   DISPLAY NAME                                           DEFAULT CHANNEL
+opentelemetry-product  Red Hat OpenShift distributed tracing data collection  stable
+
+PACKAGE                CHANNEL  HEAD
+opentelemetry-product  stable   opentelemetry-operator.v0.81.1-5

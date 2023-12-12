@@ -1,0 +1,5 @@
+NAME                       DISPLAY NAME                     DEFAULT CHANNEL
+crunchy-postgres-operator  Crunchy Postgres for Kubernetes  v5
+
+PACKAGE                    CHANNEL  HEAD
+crunchy-postgres-operator  v5       postgresoperator.v5.4.3

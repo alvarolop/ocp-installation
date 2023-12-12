@@ -1,0 +1,8 @@
+NAME                 DISPLAY NAME                        DEFAULT CHANNEL
+multicluster-engine  multicluster engine for Kubernetes  stable-2.4
+
+PACKAGE              CHANNEL     HEAD
+multicluster-engine  stable-2.1  multicluster-engine.v2.1.9
+multicluster-engine  stable-2.2  multicluster-engine.v2.2.9
+multicluster-engine  stable-2.3  multicluster-engine.v2.3.3
+multicluster-engine  stable-2.4  multicluster-engine.v2.4.0

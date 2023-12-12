@@ -1,0 +1,6 @@
+NAME                DISPLAY NAME  DEFAULT CHANNEL
+klusterlet-product  Klusterlet    stable-2.4
+
+PACKAGE             CHANNEL     HEAD
+klusterlet-product  stable-2.3  klusterlet-product.v2.3.3
+klusterlet-product  stable-2.4  klusterlet-product.v2.4.0

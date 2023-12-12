@@ -1,0 +1,6 @@
+NAME                 DISPLAY NAME                    DEFAULT CHANNEL
+servicemeshoperator  Red Hat OpenShift Service Mesh  stable
+
+PACKAGE              CHANNEL  HEAD
+servicemeshoperator  1.0      servicemeshoperator.v2.4.5
+servicemeshoperator  stable   servicemeshoperator.v2.4.5

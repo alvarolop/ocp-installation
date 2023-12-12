@@ -1,0 +1,6 @@
+NAME              DISPLAY NAME               DEFAULT CHANNEL
+odr-hub-operator  Openshift DR Hub Operator  stable-4.12
+
+PACKAGE           CHANNEL      HEAD
+odr-hub-operator  stable-4.11  odr-hub-operator.v4.11.12
+odr-hub-operator  stable-4.12  odr-hub-operator.v4.12.9-rhodf

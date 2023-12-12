@@ -1,0 +1,5 @@
+NAME           DISPLAY NAME    DEFAULT CHANNEL
+tempo-product  Tempo Operator  stable
+
+PACKAGE        CHANNEL  HEAD
+tempo-product  stable   tempo-operator.v0.3.1-3

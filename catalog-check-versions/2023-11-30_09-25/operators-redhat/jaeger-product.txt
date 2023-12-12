@@ -1,0 +1,5 @@
+NAME            DISPLAY NAME                                    DEFAULT CHANNEL
+jaeger-product  Red Hat OpenShift distributed tracing platform  stable
+
+PACKAGE         CHANNEL  HEAD
+jaeger-product  stable   jaeger-operator.v1.47.1-5

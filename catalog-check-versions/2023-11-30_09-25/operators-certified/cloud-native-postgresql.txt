@@ -1,0 +1,10 @@
+NAME                     DISPLAY NAME                 DEFAULT CHANNEL
+cloud-native-postgresql  EDB Postgres for Kubernetes  stable-v1.21
+
+PACKAGE                  CHANNEL       HEAD
+cloud-native-postgresql  fast          cloud-native-postgresql.v1.21.1
+cloud-native-postgresql  stable-v1.17  cloud-native-postgresql.v1.17.5
+cloud-native-postgresql  stable-v1.18  cloud-native-postgresql.v1.18.8
+cloud-native-postgresql  stable-v1.19  cloud-native-postgresql.v1.19.6
+cloud-native-postgresql  stable-v1.20  cloud-native-postgresql.v1.20.4
+cloud-native-postgresql  stable-v1.21  cloud-native-postgresql.v1.21.1

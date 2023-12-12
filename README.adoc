@@ -345,6 +345,109 @@ The previous process is based on this documentation:
 
 
 
+== Check versions from the catalog
+
+At some point, you will need to check the latest version of your installed operators in order to decide if you need to upgrade them or not. The `oc-mirror` command is the tool to use, but you will find it quite slow, as it has to download the catalog container image every time it checks the version of each operator.
+
+For that reason, I have created a hack to mirror the image locally and point to it locally.
+
+
+=== Check current catalog images
+
+First of all, you will use the normal catalog command to check the name of the catalog images. For example, this is the execution for OCP 4.12:
+
+
+[source, bash]
+----
+$ oc mirror list operators --catalogs --version=4.12
+    Available OpenShift OperatorHub catalogs:
+    OpenShift 4.12:
+    registry.redhat.io/redhat/redhat-operator-index:v4.12
+    registry.redhat.io/redhat/certified-operator-index:v4.12
+    registry.redhat.io/redhat/community-operator-index:v4.12
+    registry.redhat.io/redhat/redhat-marketplace-index:v4.12
+----
+
+NOTE: It took me around 2min with good internet connection.
+
+=== Deploy a local container registry
+
+Now, we need to deploy a local container registry to sync the container images locally. I'm using https://github.com/jtudelag/ocp-disconnected/blob/main/scripts/deploy-local-registry.sh[jtudelag] script, that I synced here:
+
+[source, bash]
+----
+$ ./catalog-check-versions/local-registry-deploy.sh
+$ podman login localhost:5000
+$ podman login registry.redhat.io
+----
+
+=== Copy the images to the local registry
+
+.Log in to both container registries
+[source, bash]
+----
+podman login registry.redhat.io
+podman login localhost:5000
+----
+
+.Pull the catalog images
+[source, bash]
+----
+podman pull registry.redhat.io/redhat/redhat-operator-index:v4.12
+podman pull registry.redhat.io/redhat/certified-operator-index:v4.12
+podman pull registry.redhat.io/redhat/community-operator-index:v4.12
+----
+
+[NOTE]
+====
+If you get the following error: 
+`Error: copying system image from manifest list: Source image rejected: Invalid GPG signature: gpgme.Signature`
+you should following this KCS: https://access.redhat.com/solutions/6542281
+====
+
+.Tag them pointing to the local registry
+[source, bash]
+----
+podman tag registry.redhat.io/redhat/redhat-operator-index:v4.12 localhost:5000/redhat/redhat-operator-index:v4.12
+podman tag registry.redhat.io/redhat/certified-operator-index:v4.12 localhost:5000/redhat/certified-operator-index:v4.12
+podman tag registry.redhat.io/redhat/community-operator-index:v4.12 localhost:5000/redhat/community-operator-index:v4.12
+----
+
+.Push them locally
+[source, bash]
+----
+podman push --remove-signatures localhost:5000/redhat/redhat-operator-index:v4.12
+podman push --remove-signatures localhost:5000/redhat/certified-operator-index:v4.12
+podman push --remove-signatures localhost:5000/redhat/community-operator-index:v4.12
+----
+
+
+
+`jq '{ 'name': .packageName, 'channel': .channelName, version}' operators.json`
+
+=== Execute the oc mirror commands
+
+
+Now, you have to always execute the scripts pointing to the local catalog images, instead of the external ones.
+
+NOTE: Comparing times, I see that `oc-mirror list operators` takes 5min to the external registry and less than a minute locally.
+
+
+This script will give you all the versions that you are looking for:
+
+.Push them locally
+[source, bash]
+----
+./catalog-check-versions/retrieve-versions.sh
+----
+
+
+
+
+
+
+
+
 
 
 == Troubleshooting during installation

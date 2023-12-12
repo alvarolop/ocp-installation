@@ -1,0 +1,6 @@
+NAME          DISPLAY NAME     DEFAULT CHANNEL
+mcg-operator  NooBaa Operator  stable-4.12
+
+PACKAGE       CHANNEL      HEAD
+mcg-operator  stable-4.11  mcg-operator.v4.11.12
+mcg-operator  stable-4.12  mcg-operator.v4.12.9-rhodf

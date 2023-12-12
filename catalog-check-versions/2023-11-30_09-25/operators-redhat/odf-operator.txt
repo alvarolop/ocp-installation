@@ -1,0 +1,6 @@
+NAME          DISPLAY NAME               DEFAULT CHANNEL
+odf-operator  OpenShift Data Foundation  stable-4.12
+
+PACKAGE       CHANNEL      HEAD
+odf-operator  stable-4.11  odf-operator.v4.11.12
+odf-operator  stable-4.12  odf-operator.v4.12.9-rhodf

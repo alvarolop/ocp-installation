@@ -1,0 +1,6 @@
+NAME                     DISPLAY NAME  DEFAULT CHANNEL
+odf-csi-addons-operator  CSI Addons    stable-4.12
+
+PACKAGE                  CHANNEL      HEAD
+odf-csi-addons-operator  stable-4.11  odf-csi-addons-operator.v4.11.12
+odf-csi-addons-operator  stable-4.12  odf-csi-addons-operator.v4.12.9-rhodf

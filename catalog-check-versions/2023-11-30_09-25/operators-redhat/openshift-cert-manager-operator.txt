@@ -1,0 +1,9 @@
+NAME                             DISPLAY NAME                                 DEFAULT CHANNEL
+openshift-cert-manager-operator  cert-manager Operator for Red Hat OpenShift  stable-v1
+
+PACKAGE                          CHANNEL       HEAD
+openshift-cert-manager-operator  stable-v1     cert-manager-operator.v1.12.1
+openshift-cert-manager-operator  stable-v1.10  cert-manager-operator.v1.10.3
+openshift-cert-manager-operator  stable-v1.11  cert-manager-operator.v1.11.5
+openshift-cert-manager-operator  stable-v1.12  cert-manager-operator.v1.12.1
+openshift-cert-manager-operator  tech-preview  openshift-cert-manager.v1.7.1

@@ -1,0 +1,9 @@
+NAME             DISPLAY NAME               DEFAULT CHANNEL
+cluster-logging  Red Hat OpenShift Logging  stable-5.8
+
+PACKAGE          CHANNEL     HEAD
+cluster-logging  stable      cluster-logging.v5.8.0
+cluster-logging  stable-5.5  cluster-logging.5.5.18
+cluster-logging  stable-5.6  cluster-logging.v5.6.13
+cluster-logging  stable-5.7  cluster-logging.v5.7.8
+cluster-logging  stable-5.8  cluster-logging.v5.8.0

@@ -1,0 +1,52 @@
+kind: ImageSetConfiguration
+apiVersion: mirror.openshift.io/v1alpha2
+storageConfig:
+  local:
+    path: ./oc-mirror-metadata
+mirror:
+  operators:
+  - catalog: registry.redhat.io/redhat/redhat-operator-index:v4.12
+    packages:
+    # ODF Packages
+    - name: local-storage-operator
+    - name: ocs-operator
+    - name: odf-operator
+    - name: mcg-operator
+    - name: odf-csi-addons-operator
+    - name: odr-cluster-operator
+    - name: odr-hub-operator
+    # RHACM Packages
+    - name: advanced-cluster-management
+    - name: multicluster-engine
+    - name: klusterlet-product
+    # RH Gitops: Broken https://issues.redhat.com/projects/GITOPS/issues/GITOPS-2991?filter=allopenissues
+    - name: openshift-gitops-operator
+    # OADP Packages
+    - name: redhat-oadp-operator
+    # OCP Update Service
+    - name: cincinnati-operator
+    # RHACS packages
+    - name: rhacs-operator
+    # Compliance Operator
+    - name: compliance-operator
+    # Cert Manager
+    - name: openshift-cert-manager-operator
+    # RH Pipelines
+    - name: openshift-pipelines-operator-rh
+    # OCP Logging
+    - name: cluster-logging
+    - name: loki-operator
+    # RH Dist Tracing - Tempo Does not work disconnected on 4.12, seems fixed in 4.1
+    - name: jaeger-product
+    - name: opentelemetry-product
+    - name: tempo-product
+    - name: elasticsearch-operator
+    # Red Hat Service Mesh
+    - name: servicemeshoperator
+    - name: kiali-ossm
+    # Network Observability Operator
+    - name: netobserv-operator
+    # AMQ Streams
+    - name: amq-streams
+    # Red Hat Build of Keycloak
+    - name: rhbk-operator

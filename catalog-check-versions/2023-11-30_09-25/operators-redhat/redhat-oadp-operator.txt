@@ -1,0 +1,8 @@
+NAME                  DISPLAY NAME   DEFAULT CHANNEL
+redhat-oadp-operator  OADP Operator  stable-1.2
+
+PACKAGE               CHANNEL     HEAD
+redhat-oadp-operator  stable      oadp-operator.v1.1.7
+redhat-oadp-operator  stable-1.0  oadp-operator.v1.0.14
+redhat-oadp-operator  stable-1.1  oadp-operator.v1.1.7
+redhat-oadp-operator  stable-1.2  oadp-operator.v1.2.3

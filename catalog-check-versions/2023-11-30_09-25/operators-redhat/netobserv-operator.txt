@@ -1,0 +1,6 @@
+NAME                DISPLAY NAME           DEFAULT CHANNEL
+netobserv-operator  Network Observability  stable
+
+PACKAGE             CHANNEL  HEAD
+netobserv-operator  stable   network-observability-operator.v1.4.2
+netobserv-operator  v1.0.x   network-observability-operator.v1.3.0
